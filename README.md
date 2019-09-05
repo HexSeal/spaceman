@@ -1,0 +1,2 @@
+# spaceman
+Politically correct hangman

@@ -12,6 +12,7 @@ def load_word():
     words_list = f.readlines()
     f.close()
 
+    words_list = words_list[0].split(' ')
     secret_word = random.choice(words_list)
     return secret_word
 
@@ -24,8 +25,12 @@ def is_word_guessed(secret_word, letters_guessed):
     Returns: 
         bool: True only if all the letters of secret_word are in letters_guessed, False otherwise
     '''
-    # TODO: Loop through the letters in the secret_word and check if a letter is not in lettersGuessed
-    pass
+
+    for letter in secret_word:
+        if letter not in letters_guessed:
+            return False
+        return True
+
 
 def get_guessed_word(secret_word, letters_guessed):
     '''
@@ -37,9 +42,13 @@ def get_guessed_word(secret_word, letters_guessed):
         string: letters and underscores.  For letters in the word that the user has guessed correctly, the string should contain the letter at the correct position.  For letters in the word that the user has not yet guessed, shown an _ (underscore) instead.
     '''
 
-    #TODO: Loop through the letters in secret word and build a string that shows the letters that have been guessed correctly so far that are saved in letters_guessed and underscores for the letters that have not been guessed yet
-
-    pass
+    got_letters = []
+    for letter in secret_word:
+        if letter in letters_guessed:
+            got_letters += letter
+        else: 
+            got_letters += ("__")
+    return got_letters
 
 
 def is_guess_in_word(guess, secret_word):
@@ -53,7 +62,10 @@ def is_guess_in_word(guess, secret_word):
     '''
     #TODO: check if the letter guess is in the secret word
 
-    pass
+    if guess in secret_word:
+        return True
+    else:
+        return False
 
 
 

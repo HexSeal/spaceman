@@ -91,7 +91,7 @@ def spaceman(secret_word):
     guesses = 0
 
     while running == True:
-        print("You have " + (str(7 -guesses)) + " guesses left!")
+        print("You have " + (str(7 - guesses)) + " guesses left!")
         
         guess = input("Please input a letter: ")
         if len(guess) != 1:
@@ -108,7 +108,7 @@ def spaceman(secret_word):
     
     #TODO: show the guessed word so far
         print("Your guesses this far are: ", get_guessed_word(secret_word, gotten_letters))
-
+        print("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
     #TODO: check if the game has been won or lost
     
         if is_word_guessed(secret_word, gotten_letters):

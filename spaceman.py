@@ -78,9 +78,7 @@ def spaceman(secret_word):
     Args:
       secret_word (string): the secret word to guess.
     '''
-
-    gotten_letters = []
-
+    
     #TODO: show the player information about the game according to the project spec
     print("\nThe secret word has " + str(len(secret_word)) + " letters.") 
     print("You have 7 guesses. Good Luck!")
@@ -88,10 +86,13 @@ def spaceman(secret_word):
     print("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")    
 
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
-    for rounds in range(8):
-        guesses = 7
-        print("You have",str(guesses),"guesses left!")
-        guesses = guesses - 1
+    running = True
+    gotten_letters = []
+    guesses = 0
+
+    while running == True:
+        print("You have " + (str(7 -guesses)) + " guesses left!")
+        
         guess = input("Please input a letter: ")
         if len(guess) != 1:
             print("Please enter only one letter")
@@ -103,6 +104,7 @@ def spaceman(secret_word):
             gotten_letters.append(guess)
         else:
             print("Wrong! Try again")
+            guesses += 1
     
     #TODO: show the guessed word so far
         print("Your guesses this far are: ", get_guessed_word(secret_word, gotten_letters))
@@ -111,10 +113,18 @@ def spaceman(secret_word):
     
         if is_word_guessed(secret_word, gotten_letters):
             print("Congrats, you guessed the secret word!")
-            break
-        else:
-            print("Sorry, you lost.")
+            function_code = input("Play Again? y/n: ")
+            if function_code.lower() == "y":
+                spaceman(load_word())
 
+        if guesses == 7:
+            print("Sorry, you lost.")
+            print("Thank you for playing")
+            print("The secret word was: ", secret_word)
+            function_code = input("Play Again? y/n: ")
+            if function_code.lower() == "y":
+                spaceman(load_word())
+                return True
 
 #These function calls that will start the game
 print("\nWelcome to Spaceman(hangman)!")

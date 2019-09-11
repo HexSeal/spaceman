@@ -66,12 +66,6 @@ def is_guess_in_word(guess, secret_word):
     else:
         return False
 
-# To check how many guesses are left
-def guesses_left(guesses):
-    guesses = guesses-1
-    return guesses
-
-
 def spaceman(secret_word):
     '''
     A function that controls the game of spaceman. Will start spaceman in the command line.
